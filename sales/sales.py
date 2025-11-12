@@ -41,12 +41,11 @@ def update(docname, updated):
         total_amount += amount
         row_name = item.get("name")
 
-        # Try to get existing Sales Item row with same parent, idx
        
 
         if row_name and row_name in existing_row:
         
-            # Update existing row
+            
             frappe.db.set_value("Sales Items", row_name, {
                 "name1": name1,
                 "qty": qty,
@@ -55,7 +54,7 @@ def update(docname, updated):
             })
             updated_rows.add(row_name)
         else:
-            # Insert new row
+            
             new_row = frappe.new_doc("Sales Items")
             new_row.parent = docname
             new_row.parenttype = "Sales"
